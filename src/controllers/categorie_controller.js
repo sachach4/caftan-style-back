@@ -1,53 +1,39 @@
-//const {Categorie,Produits}  = require("../models");
-const db = require("../models");
-
-const { Categorie, Product } = db;
+const {Categorie,Product}  = require("../models");
+//const db = require("../models");
+//const { Categorie, Product } = db;
 
 const caftanController = {
   recupererLesCaftan: async nomCat => {
-    console.log(nomCat);
-
-    console.log("JE PASSE ICI");
-    //console.log('rrere', Categorie)
-
-
     const categorie = await Categorie.findAll({
-      //   //order: [["nom", "ASC"]],
+        attributes: ["id","nom"],
       include: [{
          model: Product ,
          attributes: ["id", "nom", "prix", "taille", "image", "stock"],
         }
       ],
-        where: { nom: nomCat },
-        attributes: ["nom"],
-        
-        
+        where: { nom: nomCat }, 
         raw: true
       });
       return categorie;
-  
-      // const categorie = await Categorie.findOne({
-      //   //order: [["nom", "ASC"]],
-      //   where: { "nom": nomCat },
-      //   attributes: ["id", "nom"],
-      //   include: [
-      //     {
-
-      //      model: Product ,
-      //     // attributes: ["id", "nom","prix"]
-
-      //     }
-      //   ],
-        
-      //   raw: true
-      // });
-      // return categorie;
+    },
+      recupererUnProduit: async id => {
+        const Produit = await Categorie.findByPk(id, {
+          attributes: ["id","nom"],
+          include: [
+            {
+              model: Product,
+              attributes: ["id", "nom", "prix", "taille", "image", "stock"]
+            },
+            
+          ]
+        });
+        return Produit;
     
-    //console.log("JE PASSE LA AUSSI");
-    //console.log("mmmmmmmmmmmmmmmm", categorie);
+      }
+    };
+    module.exports=caftanController;
     
-  }
-};
+
 
 //const Produit=db.produit;
 //const uuid = require("uuid/v4");

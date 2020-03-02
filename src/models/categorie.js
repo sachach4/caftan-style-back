@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           notNull: true,
           len: [2, 50],
-        }
+        },
+        unique: true
       },
       createdAt: {
         field: "created_at",
