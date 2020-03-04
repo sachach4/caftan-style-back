@@ -9,21 +9,27 @@ const productsController = {
       raw: true
     });
 
-
     return products;
   },
   recupererProduit: async idCat => {
     const Produit = await Product.findByPk(id, {
-      attributes: ["id","nom", "prix", "taille", "image", "stock"],
+      attributes: [
+        "id",
+        "nom",
+        "prix",
+        "taille",
+        "image",
+        "descriptif",
+        "stock"
+      ],
       include: [
         {
           model: Categorie,
           attributes: ["id", "nom"]
-        },
-        
+        }
       ],
-      where: { id: idCat }, 
-          raw: true
+      where: { id: idCat },
+      raw: true
     });
     return Produit;
     // recupererLesCaftan: async nomCat => {
@@ -34,12 +40,11 @@ const productsController = {
     //        attributes: ["id", "nom", "prix", "taille", "image", "stock"],
     //       }
     //     ],
-    //       where: { nom: nomCat }, 
+    //       where: { nom: nomCat },
     //       raw: true
     //     });
     //     return categorie;
     //   },
-
   }
 };
 module.exports = productsController;

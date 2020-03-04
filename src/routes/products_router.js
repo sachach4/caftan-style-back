@@ -1,7 +1,7 @@
 const express = require("express");
 require("express-async-errors");
 
-const { recupererLesProducts } = require("../controllers/products_controller");
+const { ajouter } = require("../controllers/products_controller");
 
 const { ok } = require("../helpers/status_code")
 const productsRouter = express.Router();

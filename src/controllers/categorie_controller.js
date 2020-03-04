@@ -9,7 +9,7 @@ const caftanController = {
       include: [
         {
           model: Product,
-          attributes: ["id", "nom", "prix", "taille", "image", "stock"]
+          attributes: ["id", "nom", "prix", "taille", "image","descriptif", "stock"]
         }
       ],
       where: { nom: nomCat },
@@ -19,7 +19,7 @@ const caftanController = {
   },
   recupererUnProduit: async id => {
     const Produit = await Product.findByPk(id, {
-      attributes: ["id", "nom", "prix", "taille", "image", "stock"],
+      attributes: ["id", "nom", "prix", "taille", "image", "descriptif","stock"],
       include: [
         {
           model: Categorie,
