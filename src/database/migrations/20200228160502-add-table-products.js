@@ -32,6 +32,11 @@ module.exports = {
           key: "id"
         }
       },
+      descriptif:{
+        allowNull:false,
+        type:Sequelize.STRING(200)
+
+      },
       stock: {
         allowNull: false,
         type: Sequelize.INTEGER

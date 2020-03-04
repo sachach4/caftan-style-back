@@ -1,4 +1,4 @@
-const categorie=require("../seeds/10200227110000-categorie");
+const categorie=require("../seeds/10300224160500-categorie");
 module.exports={
   up:(queryInterface,Sequelize)=>{
     return queryInterface.bulkInsert("categories", categorie);

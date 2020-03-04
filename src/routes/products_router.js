@@ -11,4 +11,11 @@ productsRouter.get("/", async (request, response) => {
   response.status(200).json(products);
 
 });
+productsRouter.get("/:id", async (request, response) => {
+  const { id } = request.params;
+  const caftan = await recupererLesCaftan(id);
+  console.log("on va sortir de la route");
+  console.log(caftan);
+  response.status(200).json(caftan);
+});
 module.exports = productsRouter;

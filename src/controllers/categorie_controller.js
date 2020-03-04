@@ -1,39 +1,36 @@
-const {Categorie,Product}  = require("../models");
+const { Categorie, Product } = require("../models");
 //const db = require("../models");
 //const { Categorie, Product } = db;
 
 const caftanController = {
   recupererLesCaftan: async nomCat => {
     const categorie = await Categorie.findAll({
-        attributes: ["id","nom"],
-      include: [{
-         model: Product ,
-         attributes: ["id", "nom", "prix", "taille", "image", "stock"],
+      attributes: ["id", "nom"],
+      include: [
+        {
+          model: Product,
+          attributes: ["id", "nom", "prix", "taille", "image", "stock"]
         }
       ],
-        where: { nom: nomCat }, 
-        raw: true
-      });
-      return categorie;
-    },
-      recupererUnProduit: async id => {
-        const Produit = await Categorie.findByPk(id, {
-          attributes: ["id","nom"],
-          include: [
-            {
-              model: Product,
-              attributes: ["id", "nom", "prix", "taille", "image", "stock"]
-            },
-            
-          ]
-        });
-        return Produit;
-    
-      }
-    };
-    module.exports=caftanController;
-    
-
+      where: { nom: nomCat },
+      raw: true
+    });
+    return categorie;
+  },
+  recupererUnProduit: async id => {
+    const Produit = await Product.findByPk(id, {
+      attributes: ["id", "nom", "prix", "taille", "image", "stock"],
+      include: [
+        {
+          model: Categorie,
+          attributes: ["id", "nom"]
+        }
+      ]
+    });
+    return Produit;
+  }
+};
+module.exports = caftanController;
 
 //const Produit=db.produit;
 //const uuid = require("uuid/v4");

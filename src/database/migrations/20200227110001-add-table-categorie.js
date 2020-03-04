@@ -9,7 +9,8 @@ module.exports={
       },
       nom:{
         allowNull:false,
-        type:Sequelize.STRING(50)
+        type:Sequelize.STRING(50),
+        unique:true
       },
       created_at: {
         allowNull: false,

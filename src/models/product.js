@@ -49,13 +49,19 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.UUID
       },
+      descriptif:{
+        allowNull: false,
+        type: DataTypes.STRING,
+
+      },
+      
       stock: {
         allowNull: false,
         type: DataTypes.INTEGER
         // validate: {
         //   notNull: true
         // }
-      },
+        },
       createdAt: {
         field: "created_at",
         allowNull: false,
