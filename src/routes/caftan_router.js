@@ -3,7 +3,7 @@ require("express-async-errors");
 
 const { recupererLesCaftan,recupererUnProduit } = require("../controllers/categorie_controller");
 
-const { ok } = require("../helpers/status_code");
+const { OK } = require("../helpers/status_code");
 const caftanRouter = express.Router();
 
 // caftanRouter.get("/", async (request, response) => {

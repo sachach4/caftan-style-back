@@ -17,6 +17,7 @@ const caftanController = {
     });
     return categorie;
   },
+  
   recupererUnProduit: async id => {
     const Produit = await Product.findByPk(id, {
       attributes: ["id", "nom", "prix", "taille", "image", "descriptif","stock"],
@@ -30,7 +31,7 @@ const caftanController = {
     return Produit;
   }
 };
-module.exports = caftanController;
+
 
 //const Produit=db.produit;
 //const uuid = require("uuid/v4");

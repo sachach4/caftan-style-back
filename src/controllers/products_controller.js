@@ -31,6 +31,8 @@ const productsController = {
       where: { id: idCat },
       raw: true
     });
+    // if !Produit
+    // throw new NotFoundError
     return Produit;
     // recupererLesCaftan: async nomCat => {
     //   const categorie = await Categorie.findAll({
